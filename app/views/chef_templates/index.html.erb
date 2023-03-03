@@ -1,0 +1,50 @@
+<h1>
+  List of all chefs
+</h1>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Name
+    </th>
+
+    <th>
+      Bio
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @list_of_chefs.each do |a_chef| %>
+  <tr>
+    <td>
+      <%= a_chef.id %>
+    </td>
+
+    <td>
+      <img src="<%= a_chef.image%>">
+    </td>
+
+    <td>
+      <%= a_chef.chef_name %>
+    </td>
+
+    <td>
+      <a href="/chefs/<%= a_chef.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,66 @@
+<h1>
+  List of all recipes
+</h1>
+
+<hr>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Recipe
+    </th>
+
+    <th>
+      Rating
+    </th>
+
+    <th>
+      Directions
+    </th>
+
+    <th>
+      Details
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @list_of_recipes.each do |a_recipe| %>
+  <tr>
+    <td>
+      <%= a_recipe.id %>
+    </td>
+
+    <td>
+      <img src="<%= a_recipe.image%>">
+    </td>
+
+    <td>
+      <%= a_recipe.name %>
+    </td>
+
+    <td>
+      <%= a_recipe.rating %>
+    </td>
+
+    <td>
+      <%= a_recipe.recipe_steps %>
+    </td>
+
+    <td>
+      <a href="/recipes/<%= a_recipe.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
