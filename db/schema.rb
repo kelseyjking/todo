@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_02_224412) do
+ActiveRecord::Schema.define(version: 2023_03_04_054723) do
 
   create_table "chefs", force: :cascade do |t|
     t.string "chef_name"
     t.text "bio"
     t.string "image"
     t.integer "related_recipes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "recipe_id"
+    t.string "message"
+    t.integer "author_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -39,6 +48,17 @@ ActiveRecord::Schema.define(version: 2023_03_02_224412) do
     t.string "image"
     t.integer "chef_id"
     t.integer "ingredient_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "comments_count"
+    t.integer "likes_count"
+    t.string "password_digest"
+    t.boolean "private"
+    t.string "username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

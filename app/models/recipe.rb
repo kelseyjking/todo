@@ -14,4 +14,7 @@
 #  ingredient_id :integer
 #
 class Recipe < ApplicationRecord
+  def comments
+    return Comment.where({ :recipe_id => self.id })
+  end
 end

@@ -1,0 +1,50 @@
+<h1>Recipe Details</h1>
+
+<dl>
+  <dt>Image</dt>
+  <dd>
+    <img src="<%= @recipe.image %>">
+  </dd>
+
+  <dt>Name</dt>
+  <dd>
+    <p><%= @recipe.name %></p>
+  </dd>
+
+
+<h2>Comments</h2>
+
+<table>
+  <tr>
+    <th>Commenter</th>
+    <th>Comment</th>
+    <th>Posted</th>
+  </tr>
+
+  <% @recipe.comments.each do |comment| %>
+  <tr>
+    <td>
+      "I need to be turned into comment.commenter.username later"
+    </td>
+
+    <td>
+      <%= comment.message %>
+    </td>
+
+    <td>
+      <%= comment.created_at %>
+    </td>
+  </tr>
+  
+  <% end %>
+</table>
+
+<h3>Add a new comment</h3>
+
+<form action="/insert_comment_record" method="post">
+  <input id="browser_recipe_id" type="hidden" value="<%= @recipe.id %>" name="input_recipe_id">
+  <label for="browser_comment">Comment</label>
+  <textarea id="browser_comment" name="input_message" placeholder="Enter a comment..."></textarea>
+
+  <button>Add comment</button>
+</form>

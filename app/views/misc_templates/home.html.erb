@@ -1,37 +1,166 @@
-<h1>The Food Chronicles</h1>
 
-  <div class="article-image">
-    <div class="mask"></div>
-    <img src="https://cdn.pixabay.com/photo/2022/04/30/19/12/cooking-banner-7166200_1280.jpg"/>
+<!DOCTYPE html>
+
+<html lang="en">
+  
+
+<head>
+
+  <!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
+    <!-- Connect Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif|Rufina:700" rel="stylesheet">
+    <title>The Food Chronicles</title>
+    <style>
+
+    
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #7db6a4;
+        opacity: 1;
+        background-image:  radial-gradient(#ffffff 0.5px, transparent 0.5px), radial-gradient(#ffffff 0.5px, #7db6a4 0.5px);
+        background-size: 20px 20px;
+        background-position: 0 0,10px 10px;
+        display: flex;
+        justify-content: center;
+      }
+  
+      .banner-image {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 128px;
+      }
+  
+      .thumbnail {
+        width: 48px;
+        height: 48px;
+        border-radius: 48px;
+        object-fit: cover;
+      }
+  
+      .name {
+        Font-Family: 'Rufina', Serif;
+        Font-Size: 48px;
+        color: #0d413e;
+        display: flex;
+        justify-content: center;
+      }
+  
+      .social-icons a {
+        Font-Family: 'PT Serif', Serif;
+        Font-Size: 18px;
+        color: #fffffe;
+        text-decoration: none
+      }
+  
+      .link {
+        Font-Family: 'PT Serif', Serif;
+        Font-Size: 18px;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+      }
+  
+      .link a {
+        Font-Family: 'PT Serif', Serif;
+        Font-Size: 18px;
+        color: #0d413e;
+        text-decoration: none;
+        text-align: center;
+        flex-grow: 1;
+      }
+  
+      .items {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 650px;
+        flex-grow: 1;
+      }
+  
+      .banner {
+        display: flex;
+        justify-content: center;
+      }
+  
+      .social-icons {
+        display: flex;
+        justify-content: space-around;
+      }
+    </style>
+  </head>
+
+  <body>
+
+  <div class="icon-bar">
+  <a class="active" href="/"><i class="fa fa-home"></i></a>
+  <a href="#"><i class="fa fa-search"></i></a>
   </div>
 
+  <nav>
+      <ul>
+        <div>
+                <a href="/user_sign_up">Sign Up</a>
+        </div>
+              <div>
+                <a href="/user_sign_in">Sign In</a>
+        </div>
+        <div>
+                <a href="/user_sign_out">Sign Out</a>
+        </div>
+        <div>
+                <%= if session.has_key?(:username) then "User: #{session.fetch(:username)}" end %>
+        </div>
+      </ul>
+  </nav>
 
-<ul>
-  <li>
-    <a href="/recipes">
-      All recipes
-    </a>
-    <ul>
-      <li>
-        <a href="/recipes/latest">
-          Latest recipes
+    <div class="items">
+      <div class="banner">
+        <img src="https://shop.americastestkitchen.com/media/catalog/product/p/r/prodpage_tray1_proteakcuttingboard_2x.jpg?quality=90&bg-color=255,255,255&fit=bounds&height=280&width=280&canvas=280:280" class="banner-image">
+      </div>
+    
+      <div class="name">
+        The Food Chronicles
+      </div>
+    
+      <div class="social-icons">
+        <i class="fa-brands fa-github"></i>
+        <a href="/recipes" target="_blank">
+          Recipes - Change icon
         </a>
-      </li>
-      <li>
-        <a href="/recipes/toprated">
-          Top rated recipes
+      
+        <i class="fa-brands fa-linkedin"></i>
+        <a href="/chefs" target="_blank">
+          Chefs
         </a>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <a href="/chefs">
-      All chefs
-    </a>
-  </li>
-  <li>
-    <a href="/ingredients">
-      All ingredients
-    </a>
-  </li>
-</ul>
+      
+        <i class="fa-brands fa-twitter"></i>
+        <a href="/ingredients" target="_blank">
+          Ingredients
+        </a>
+      
+      </div>
+
+    <% @top_recipes.each do |recipe| %>
+      <div class="link">
+        <img class="thumbnail" src="<%= recipe.image%>">
+
+        <a target="_blank" href="/recipes/<%= recipe.id %>;">
+        <%= recipe.name %>
+        </a>
+      </div>
+    <% end %>
+
+    
+    
+ 
+    </div>
+  </body>
+
+</html>

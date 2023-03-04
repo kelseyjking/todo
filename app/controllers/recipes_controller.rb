@@ -1,18 +1,14 @@
 class RecipesController < ApplicationController
   def index
-    matching_recipes = Recipe.all
-    @list_of_recipes = matching_recipes.order({ :created_at => :desc })
+    all_recipes = Recipe.all
+    @sorted_recipes = all_recipes.order({ :created_at => :desc })
 
     render({ :template => "recipe_templates/index.html.erb" })
   end
 
-  def recent
-
-    render({ :template => "recipe_templates/recent.html.erb" })
-  end
-
-  def best
-
-    render({ :template => "recipe_templates/best.html.erb" })
+  def show
+    recipe_id = params.fetch("the_recipe_id")
+    @recipe = Recipe.where({:id => recipe_id }).first
+    render({ :template => "recipe_templates/show.html.erb" })
   end
 end
