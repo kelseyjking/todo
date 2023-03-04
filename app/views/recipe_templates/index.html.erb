@@ -86,32 +86,33 @@
         display: flex;
         justify-content: space-around;
       }
+
+      
     </style>
   </head>
 
 
 
   <body>
+  <nav>
+      <ul>
 
-  <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <div class="icon-bar">
-      <a class="active" href="/"><i class="fa fa-home"></i></a>
-      <a href="#"><i class="fa fa-search"></i></a>
-    </div>
-
-    <nav>
-          <ul>
-      <div>
-              <a href="/user_sign_up">Sign Up</a>
-      </div>
-      <div>
-              <a href="/user_sign_out">Sign Out</a>
-      </div>
-      <div>
-              <%= session.fetch(:user_id) %>
-      </div>
-
+        <div class="icon-bar">
+          <a class="active" href="/"><i class="fa fa-home"></i></a>
+          <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        <div>
+                <a href="/user_sign_up">Sign Up</a>
+        </div>
+              <div>
+                <a href="/user_sign_in">Sign In</a>
+        </div>
+        <div>
+                <a href="/user_sign_out">Sign Out</a>
+        </div>
+        <div>
+                <%= if session.has_key?(:username) then "User: #{session.fetch(:username)}" end %>
+        </div>
       </ul>
   </nav>
 
