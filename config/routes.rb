@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
     # CREATE
     get("/insert_user_record", {:controller => "users", :action => "create" })
+    post("/insert_rating", {:controller => "rating", :action => "create" })
 
     # READ
     get("/users", {:controller => "users", :action => "index"})

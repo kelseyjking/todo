@@ -21,4 +21,9 @@ class Recipe < ApplicationRecord
   def poster
     return User.where({ :id => self.owner_id }).at(0)
   end
+
+  def ratings
+    return Rating.where({ :recipe_id => self.id })
+  end
+
 end
