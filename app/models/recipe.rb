@@ -22,8 +22,17 @@ class Recipe < ApplicationRecord
     return User.where({ :id => self.owner_id }).at(0)
   end
 
-  def ratings
+  def user_ratings
     return Rating.where({ :recipe_id => self.id })
+  end
+
+  def average_ratings
+    ratings = Rating.where({ :recipe_id => self.id })
+    summing_ratings = 0
+    ratings.each do |each_rating|
+      summing_ratings = summing_ratings + each_rating.rating_id
+    end
+    return summing_ratings.to_f / ratings.length.to_f
   end
 
 end

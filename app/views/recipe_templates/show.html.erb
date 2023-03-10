@@ -197,6 +197,10 @@
       <div class="name">
         <p><%= @recipe.name %></p>
       </div>
+
+      <div class="social-icons">
+        <p>Average Rating: <%= @recipe.average_ratings %> </p>
+      </div>
     
       <div class="social-icons">
         <i class="fa-solid fa-utensils"></i>
@@ -221,6 +225,8 @@
 
 <h2>Insert Rating</h2>
       <form action="/insert_rating" method="post">
+        <input id="browser_rater_id" type="hidden" value="<%= session.fetch(:user_id) %>" name="input_rater_id">  
+  
         <input id="browser_recipe_id" type="hidden" value="<%= @recipe.id %>" name="input_recipe_id">
         <input list="ratings" name="rating_number">
 

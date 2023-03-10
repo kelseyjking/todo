@@ -1,14 +1,15 @@
 class RatingController < ApplicationController
 
     def create
-      p "I got to Ratings.Create"
       # Get user input
-      rating = params.fetch("rating_number")
+      rater_id = params.fetch("input_rater_id")
+      recipe_id = params.fetch("input_recipe_id")
+      rating_value = params.fetch("rating_number")
   
       rating = Rating.new
       # comment.author_id = session.fetch(:user_id)
       rating.recipe_id = recipe_id
-      rating.rating_id = rating_id
+      rating.rating_id = rating_value
       rating.rater_id = rater_id
       rating.save
   

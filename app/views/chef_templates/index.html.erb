@@ -1,24 +1,125 @@
+<head>
+    <meta charset="UTF-8">
+    <!-- Connect Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif|Rufina:700" rel="stylesheet">
+    <title>The Food Chronicles - Chefs</title>
+    <style>
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #7db6a4;
+        opacity: 1;
+        background-image:  radial-gradient(#ffffff 0.5px, transparent 0.5px), radial-gradient(#ffffff 0.5px, #7db6a4 0.5px);
+        background-size: 20px 20px;
+        background-position: 0 0,10px 10px;
+        justify-content: center;
+      }
+  
+      .banner-image {
+        width: 160px;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 128px;
+      }
+  
+      .thumbnail {
+        width: 48px;
+        height: 48px;
+        border-radius: 48px;
+        object-fit: cover;
+      }
+  
+      .name {
+        Font-Family: 'Rufina', Serif;
+        Font-Size: 48px;
+        color: #0d413e;
+        display: flex;
+        justify-content: center;
+      }
+  
+      .social-icons a {
+        Font-Family: 'PT Serif', Serif;
+        Font-Size: 18px;
+        color: #fffffe;
+        text-decoration: none
+      }
+  
+      .link {
+        Font-Family: 'PT Serif', Serif;
+        Font-Size: 18px;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        padding: 5px;
+      }
+  
+      .link a {
+        Font-Family: 'PT Serif', Serif;
+        Font-Size: 18px;
+        color: #0d413e;
+        text-decoration: none;
+        text-align: center;
+        flex-grow: 1;
+      }
+  
+      .items {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 650px;
+        flex-grow: 1;
+      }
+  
+      .banner {
+        display: flex;
+        justify-content: center;
+      }
+  
+      .social-icons {
+        display: flex;
+        justify-content: space-around;
+      }
+    </style>
+  </head>
+
   <nav>
-    <ul>
-      <li><a href="/">Home</a></li> 
-      <li><a href="/recipes">Recipes</a></li> 
-      <li><a href="/ingredients">Ingredients</a></li> 
-    </ul>
+      <ul>
+
+        <div class="icon-bar">
+          <a class="active" href="/"><i class="fa fa-home"></i></a>
+          <a href="#"><i class="fa fa-search"></i></a>
+        </div>
+        <div>
+                <a href="/user_sign_up">Sign Up</a>
+        </div>
+              <div>
+                <a href="/user_sign_in">Sign In</a>
+        </div>
+        <div>
+                <a href="/user_sign_out">Sign Out</a>
+        </div>
+        <div>
+                <%= if session.has_key?(:username) then "User: #{session.fetch(:username)}" end %>
+        </div>
+      </ul>
   </nav>
 
 <h1>
   List of all chefs
 </h1>
 
-<form action="/insert_chef_record">
-  <label for="browser_chef_name">New Chef</label>
-  <input id="browser_chef_name" type="text" name="chef_name" placeholder="Enter a chef's name...">
+<br>
 
+<form action="/insert_chef_record" method="post">
+  <label for="browser_chef_name">Name</label>
+  <input id="browser_chef_name" type="text" name="chef_name" placeholder="Enter a chef's name">
+  <label for="browser_chef_image">Image</label>
+  <input id="browser_chef_image" type="text" name="chef_image" placeholder="Enter an image url">
   <button>Add Chef</button>
 </form>
 
-
-<hr>
+<br>
 
 <table border="1">
   <tr>

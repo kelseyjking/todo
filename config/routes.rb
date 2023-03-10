@@ -7,12 +7,11 @@ Rails.application.routes.draw do
     get("/recipes/:the_recipe_id", { :controller => "recipes", :action => "show"})
 
     get("/chefs", { :controller => "chefs", :action => "index" })
+    post("/insert_chef_record", {:controller => "chefs", :action => "create" })
 
     get("/ingredients", { :controller => "ingredients", :action => "index" })
 
-
     post("/insert_comment_record", { :controller => "comments", :action => "create" })
-
 
       # User routes
     get("/user_sign_up", {:controller => "users", :action => "new_registration_form" })
