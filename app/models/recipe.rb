@@ -17,4 +17,8 @@ class Recipe < ApplicationRecord
   def comments
     return Comment.where({ :recipe_id => self.id })
   end
+  
+  def poster
+    return User.where({ :id => self.owner_id }).at(0)
+  end
 end

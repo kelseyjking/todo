@@ -21,4 +21,5 @@ class Comment < ApplicationRecord
   def recipe
     return Recipe.where({ :id => self.recipe_id }).at(0)
   end
+  
 end
